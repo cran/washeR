@@ -1,0 +1,12 @@
+8919ba17d8a4bf6df36fe1d6ef996adb *DESCRIPTION
+001a6bebcc1985a9d7559224782e40e5 *NAMESPACE
+39594bf04d5468dcebf7a749077ea3b6 *R/dati.R
+5ccc6fee9748ed99cc372ec774c4f1e2 *R/ts.R
+050461610d48588c52a972c9b4f9af93 *R/wash.out.R
+a5503efcfd291d171baddbe881e56eb1 *R/washeR-package.r
+a7dfcf9f89dedf59685e8c0725fb55dc *data/dati.RData
+18ea5152e067642f1278804eca3f9c67 *data/ts.RData
+3638b12df5f5b45aba6e287a5703874a *man/dati.Rd
+da6a0c0e445c38263a911c613569766f *man/ts.Rd
+1135fdbd8ccb9d2684944853933f83a6 *man/wash.out.Rd
+cf0a8a25379f0ea3ea47275afb50d6d3 *man/washeR.Rd
