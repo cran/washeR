@@ -16,5 +16,5 @@ For other informations see: A. Venturini (2011)
 (https://www.r-bloggers.com/time-series-outlier-detection-a-simple-r-function/) for an informal explanation.
 }
 \references{
-Andrea Venturini “Time Series Outlier Detection: A New Non Parametric Methodology (washer)” Statistica — Università di Bologna, Vol. 71, 2011, pp. 329-344.
+Andrea Venturini "Time Series Outlier Detection: A New Non Parametric Methodology (washer)" Statistica — Universita' di Bologna, Vol. 71, 2011, pp. 329-344.
 }

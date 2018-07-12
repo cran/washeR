@@ -1,7 +1,7 @@
-#' Time series outlier detection: washer
+#' Time Series Outlier Detection (washer)
 #'
 #'    This function provides a new outlier detection methodology (washer): efficient for timesaving elaboration and implementation procedures, adaptable for general assumptions and for needing very short time series, reliable and effective as involving robust non parametric test.
-#'    You can input a vector or a data frame with ordered information (as showed below). See: Andrea Venturini, “Time Series Outlier Detection: A New Non Parametric Methodology (washer)” Statistica — Università di Bologna, Vol. 71, 2011, pp. 329-344.
+#'    You can input a vector or a data frame with ordered information (as showed below). See: Andrea Venturini, "Time Series Outlier Detection: A New Non Parametric Methodology (washer)" Statistica — Universita' di Bologna, Vol. 71, 2011, pp. 329-344.
 #'
 #' @param dati A data frame (grouped time series: phenomenon+date+group+values) or a vector (single time series)
 #' @param graph A logical for graphical analysis (default=FALSE)

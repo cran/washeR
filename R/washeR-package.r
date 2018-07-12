@@ -11,5 +11,5 @@
 #'
 #' @name washeR
 #' @docType package
-#' @references Andrea Venturini “Time Series Outlier Detection: A New Non Parametric Methodology (washer)” Statistica — Università di Bologna, Vol. 71, 2011, pp. 329-344.
+#' @references Andrea Venturini "Time Series Outlier Detection: A New Non Parametric Methodology (washer)" Statistica — Universita' di Bologna, Vol. 71, 2011, pp. 329-344.
 NULL

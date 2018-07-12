@@ -2,7 +2,7 @@
 % Please edit documentation in R/wash.out.R
 \name{wash.out}
 \alias{wash.out}
-\title{Time series outlier detection: washer}
+\title{Time Series Outlier Detection (washer)}
 \usage{
 wash.out(dati, graph = FALSE, linear_analysis = FALSE, val_test_limit = 5,
   save_out = FALSE, out_out = "out.csv", pdf_out = "out.pdf", r_out = 3,
@@ -36,7 +36,7 @@ A data frame of possible outliers in a triad. Output record: rows /time.2/series
 }
 \description{
 This function provides a new outlier detection methodology (washer): efficient for timesaving elaboration and implementation procedures, adaptable for general assumptions and for needing very short time series, reliable and effective as involving robust non parametric test.
-   You can input a vector or a data frame with ordered information (as showed below). See: Andrea Venturini, “Time Series Outlier Detection: A New Non Parametric Methodology (washer)” Statistica — Università di Bologna, Vol. 71, 2011, pp. 329-344.
+   You can input a vector or a data frame with ordered information (as showed below). See: Andrea Venturini, "Time Series Outlier Detection: A New Non Parametric Methodology (washer)" Statistica — Universita' di Bologna, Vol. 71, 2011, pp. 329-344.
 }
 \examples{
 ## data without outliers but structured with co-movement between groups
