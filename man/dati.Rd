@@ -4,18 +4,20 @@
 \name{dati}
 \alias{dati}
 \title{Data frame of meteorological data}
-\format{A data frame with 800 rows and 4 variables:
+\format{
+A data frame with 800 rows and 4 variables:
 \describe{
   \item{phen}{Temperature, Rain}
-  \item{time}{ordered numbers for time}
-  \item{zone}{label classification for group data}
-  \item{value}{numbers for values}
+  \item{time}{ordered numbers for time (a number in the format YYYYMMDD [Year Month Day] is possible too)  }
+  \item{zone}{label classification for the group, for example the identification code of a wheather station.}
+  \item{value}{values}
 
-}}
+}
+}
 \usage{
 dati
 }
 \description{
-A dataset containing values to test outlier detection on meteorological number completely random
+This sample data would be invented meteorological information detected by weather stations.
 }
 \keyword{datasets}

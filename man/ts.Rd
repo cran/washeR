@@ -4,15 +4,17 @@
 \name{ts}
 \alias{ts}
 \title{Time series}
-\format{A data frame with 35 rows and 1 variable:
+\format{
+A data frame with 35 rows and 1 variable:
 \describe{
   \item{dati}{pseudo random numers}
 
-}}
+}
+}
 \usage{
 ts
 }
 \description{
-A dataset containing a random time series with increasing trend and some variability
+This is an example of a single time series with increasing trend and some variability.
 }
 \keyword{datasets}

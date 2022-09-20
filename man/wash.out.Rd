@@ -2,111 +2,130 @@
 % Please edit documentation in R/wash.out.R
 \name{wash.out}
 \alias{wash.out}
-\title{Time Series Outlier Detection (washer)}
+\title{Outlier detection for single or grouped time series}
 \usage{
-wash.out(dati, graph = FALSE, linear_analysis = FALSE, val_test_limit = 5,
-  save_out = FALSE, out_out = "out.csv", pdf_out = "out.pdf", r_out = 3,
-  c_out = 2, first_line = 1, pace_line = 6)
+wash.out(
+  dati,
+  graph = FALSE,
+  linear_analysis = FALSE,
+  val_test_limit = 5,
+  save_out = FALSE,
+  out_out = "out.csv",
+  pdf_out = "out.pdf",
+  r_out = 3,
+  c_out = 2,
+  first_line = 1,
+  pace_line = 6
+)
 }
 \arguments{
-\item{dati}{A data frame (grouped time series: phenomenon+date+group+values) or a vector (single time series)}
+\item{dati}{data frame (grouped time series: phenomenon+date+group+values) or vector (single time series)}
 
-\item{graph}{A logical for graphical analysis (default=FALSE)}
+\item{graph}{logical value for graphical analysis (default=FALSE)}
 
-\item{linear_analysis}{A logical for linear analysis (default=FALSE)}
+\item{linear_analysis}{logical value for linear analysis (default=FALSE)}
 
-\item{val_test_limit}{A number for testing outlier (default=5)}
+\item{val_test_limit}{value for outlier detection sensitiveness (default=5 ; max=10)}
 
-\item{save_out}{A logical for saving outliers (default=FALSE)}
+\item{save_out}{logical value for saving detected outliers (default=FALSE)}
 
-\item{out_out}{A character file name for saving outliers in csv form ";" delimited and ',' for decimal (default="out.csv")}
+\item{out_out}{a character file name for saving outliers in csv form, delimited with ";" and using ',' as decimal separator  (default out.csv)}
 
-\item{pdf_out}{A character file name for saving graphic analysis in pdf form (default="out.pdf")}
+\item{pdf_out}{a character file name for saving graphic analysis in pdf file (default=out.pdf)}
 
-\item{r_out}{A number of rows in graphic analysis (default=3)}
+\item{r_out}{rows number of graphs (default=3)}
 
-\item{c_out}{A number of cols in graphic analysis (default=2)}
+\item{c_out}{cols number of graphs (default=2)}
 
-\item{first_line}{A number for first dotted line in graphic analysis (default=1)}
+\item{first_line}{value for first dotted line in graphic analysis (default=1)}
 
-\item{pace_line}{A number for pace in dotted line in graphic analysis (default=6)}
+\item{pace_line}{value for pace in dotted line in graphic analysis (default=6)}
 }
 \value{
-A data frame of possible outliers in a triad. Output record: rows /time.2/series/y1/y2/y3/test(AV)/AV/ n /median(AV)/mad(AV)/madindex(AV). Where time.2 is the center of the triad y1, y2, y3; test(AV) is the number that over 5 detect outlier; n is the number of observations of the group ....
+Data frame of possible outliers in a triad. Output record: rows/time.2/series/y1/y2/y3/test(AV)/AV/ n/median(AV)/mad(AV)/madindex(AV). Where time.2 is the center of the triad y1, y2, y3; test(AV) is the number to compare with 5 to detect outlier; n is the number of observations of the group ....
 }
 \description{
-This function provides a new outlier detection methodology (washer): efficient for timesaving elaboration and implementation procedures, adaptable for general assumptions and for needing very short time series, reliable and effective as involving robust non parametric test.
-   You can input a vector or a data frame with ordered information (as showed below). See: Andrea Venturini, "Time Series Outlier Detection: A New Non Parametric Methodology (washer)" Statistica — Universita' di Bologna, Vol. 71, 2011, pp. 329-344.
+This function provides anomaly signals (even a graphical visualization) when there is a 'jump' in a single time series, or the 'jump' is too much different respect those ones of grouped similar time series.
 }
 \examples{
-## data without outliers but structured with co-movement between groups
+## we can start with data without outliers but structured with co-movement between groups
 data("dati")
 ## first column for phenomenon
-## 2° col for time written in ordered number or strings
+## 2° col for time written in ordered numbers or strings
 ## 3° col for group classification variable
 ## 4° col for values
 str(dati)
-## 1° -> data.frame + no outlier
+#######################################
+## a data frame without any outlier
+#######################################
 out=wash.out(dati)
-out
-length(out[,1])
-## add two outliers
+out   ## empity data frame
+length(out[,1])  ## no row
+## we can add two outliers
 ####  time=3 temperature value=0
 dati[99,4]=  0
-## ... and after for "rain" phenomenon!
+## ... and then for "rain" phenomenon!
 ####  time=3 rain value=37
 dati[118,4]=  37
-##  2° -> data.frame + 2 outliers
+#######################################
+##   data.frame with 2 fresh outliers
+#######################################
 out=wash.out(dati)
 ##  all "three terms" time series
 ## let's take a look at anomalous time series
 out
-## ... the same but save results in a specified file....
-## If you don't specify the file the name is by default "out.csv"
+## ... the same but we save results in a file....
+## If we don't specify a name, out.csv  is the default
 out=wash.out(dati,save_out=TRUE,out_out="tabel_out.csv")
 out
-## put the limit from 5 to 10 to capture only the worst outliers
-out=wash.out(dati, val_test_limit = 10  )
+## we put the parameter from 5 to 10, using this upper one  to capture
+##       only  particularly anomalous outliers
+out=wash.out(dati, val_test_limit = 10)
 out
 ## save plots and outliers in a pdf file "out.pdf" as a default
-out=wash.out(dati, val_test_limit = 10,graph=TRUE)
+out=wash.out(dati, val_test_limit = 10, graph=TRUE)
 out
-## make the usual analysis for groups but also that for every single time series
-## (linear_analysis): two files for saved outliers ("out.csv" and "linout.csv")
-##  and for graph display in two pdf files ("out.pdf" and "linout.pdf")
-out=wash.out(dati, val_test_limit = 5, save_out=TRUE,
-          linear_analysis=TRUE  ,graph=TRUE)
+## we can make the usual analysis for groups but we can also use that one
+## reserved for every single time series
+## (linear_analysis): two files for saved outliers (out.csv and linout.csv)
+##  and for graph display in two pdf files (out.pdf and linout.pdf)
+out=wash.out(dati,val_test_limit=5,save_out=TRUE,linear_analysis=TRUE,graph=TRUE)
 out
-## out return only the second linear analysis...
+## out return only the linear analysis...
+## ... in this case we lose the co-movement information an we run the risk
+##     of finding too much variance in a single time series
+##     and detecting not too much likely outliers
 ##########################################################
 ##  single time series analysis
 ##########################################################
 data(ts)
 str(ts)
-dati= ts$dati
-plot(dati,type="b",pch=20,col="red")
+sts= ts$dati
+plot(sts,type="b",pch=20,col="red")
 ## a time series with a variability and an increasing trend
-## dati is a vector and linear analysis is a default
-out=wash.out(dati)
+## sts is a vector and linear analysis is the default one
+out=wash.out(sts)
+out
+## we find no outlier
+out=wash.out(sts,val_test_limit=5,linear_analysis=TRUE,graph=TRUE)
 out
 ## no outlier
-out=wash.out(dati, val_test_limit = 5,linear_analysis=TRUE   ,graph=TRUE)
-out
-## no outlier
-## add an outlier with limited amount
-dati[5]=dati[5]*2
-plot(dati,type="b",pch=20,col="red")
-out=wash.out(dati, val_test_limit = 5)
+## We can add an outlier with limited amount
+sts[5]=sts[5]*2
+plot(sts,type="b",pch=20,col="red")
+out=wash.out(sts,val_test_limit=5)
 out
 ## test is over 5 for a bit
-out=wash.out(dati, val_test_limit = 5,save_out=TRUE ,graph=TRUE)
+out=wash.out(sts,val_test_limit=5,save_out=TRUE,graph=TRUE)
 out
 data(ts)
-dati= ts$dati
-dati[5]=dati[5]*3
-## try a greater outlier
-plot(dati,type="b",pch=20,col="blue")
-out=wash.out(dati, val_test_limit = 5,save_out=TRUE ,graph=TRUE)
+sts= ts$dati
+sts[5]=sts[5]*3
+## we can try a greater value to put an outlier of a certain importance
+plot(sts,type="b",pch=20,col="blue")
+out=wash.out(sts,val_test_limit=5,save_out=TRUE,graph=TRUE)
 out
-## washer identify three triads of possible outliers
+## washer procedure identify three triads of outliers values
+system("rm *.csv *.pdf")
+
 }
